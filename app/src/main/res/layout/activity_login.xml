@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgg"
+    tools:context=".LoginActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40sp"
+            android:src="@drawable/ecommerce" />
+
+        <TextView
+            android:id="@+id/logo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="Beli-Beli Yuk"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/playball"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/logo2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="Please Login"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_semibold"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--email-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/usernameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/username"
+                android:textColorHint="@color/gray">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Pass-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/usernameLayout"
+                android:layout_marginTop="10dp"
+                android:hint="@string/password"
+                android:textColorHint="@color/gray"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Forgot Pass-->
+            <TextView
+                android:id="@+id/forgotPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/passLayout"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                android:textSize="17dp"
+                android:text="Lupa Password?"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <!--button-->
+            <Button
+                android:id="@+id/loginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/forgotPass"
+                android:background="@drawable/shape_button"
+                android:layout_marginTop="20dp"
+                android:text="@string/login"/>
+
+            <!--create acount-->
+            <TextView
+                android:id="@+id/createAcount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/loginBtn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                android:text="@string/new_akun"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

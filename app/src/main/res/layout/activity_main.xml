@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgg"
+    android:padding="20sp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ecommerce"
+        android:layout_marginTop="80dp"/>
+
+    <TextView
+        android:id="@+id/welcoming"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/logo"
+        android:text="Welcome to Beli-Beli Yuk"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:fontFamily="@font/poppins_bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcoming"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/ajakan"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/aboutBtn"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_button"
+        android:shadowColor="@color/black"
+        android:text="Next" />
+
+    <Button
+        android:id="@+id/aboutBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/shape_button2"
+        android:text="About"
+        android:textColor="@color/colorPrimary" />
+
+
+</RelativeLayout>

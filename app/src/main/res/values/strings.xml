@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Beli-Beli Yuk</string>
+    <string name="ajakan">Beli semua kebutuhan Anda hanya di aplikasi Beli-Beli Yuk dijamin harga murah tapi kualitas terbaik dan tentunya banyak promo yang dapat Anda gunakan ketika berbelanja di aplikasi Beli-Beli Yuk:)</string>
+
+    <string name="register">Registrasi</string>
+    <string name="login">Login</string>
+    <string name="admin">Admin</string>
+    <string name="staff">Staff</string>
+    <string name="about">About</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="comfirm_password">Comfirm Password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="judul">Judul</string>
+    <string name="sample_brand">LOOKBOUTIQUESTORE</string>
+    <string name="_30">30</string>
+    <string name="sample_price">Rp.150.000</string>
+    <string name="new_akun">Belum Punya? <b>SignUp</b></string>
+    <string name="punya">Sudah Punya Akun? <b>Login</b></string>
+    <string name="customer">Customer</string>
+</resources>
