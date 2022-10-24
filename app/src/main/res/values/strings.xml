@@ -19,4 +19,13 @@
     <string name="new_akun">Belum Punya? <b>SignUp</b></string>
     <string name="punya">Sudah Punya Akun? <b>Login</b></string>
     <string name="customer">Customer</string>
+    <string name="title_activity_login_admin">LoginAdminActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>

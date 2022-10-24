@@ -6,9 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.hactiv8.e_commerceproject2.databinding.ActivityLoginBinding;
 import com.hactiv8.e_commerceproject2.databinding.ActivityPilihanBinding;
-import com.hactiv8.e_commerceproject2.ui.user.RegisterUserActivity;
+import com.hactiv8.e_commerceproject2.ui.admin.LoginAdminActivity;
 
 public class PilihanActivity extends AppCompatActivity {
 
@@ -24,7 +23,7 @@ public class PilihanActivity extends AppCompatActivity {
         binding.adminBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PilihanActivity.this, LoginActivity.class));
+                startActivity(new Intent(PilihanActivity.this, LoginAdminActivity.class));
             }
         });
 
@@ -32,7 +31,7 @@ public class PilihanActivity extends AppCompatActivity {
         binding.staffBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PilihanActivity.this, LoginActivity.class));
+                startActivity(new Intent(PilihanActivity.this, LoginAdminActivity.class));
             }
         });
 

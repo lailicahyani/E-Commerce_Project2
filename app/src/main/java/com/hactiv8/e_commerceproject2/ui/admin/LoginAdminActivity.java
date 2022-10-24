@@ -1,4 +1,4 @@
-package com.hactiv8.e_commerceproject2;
+package com.hactiv8.e_commerceproject2.ui.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,16 +20,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.hactiv8.e_commerceproject2.databinding.ActivityLoginBinding;
-import com.hactiv8.e_commerceproject2.ui.admin.DashboardAdminActivity;
+import com.hactiv8.e_commerceproject2.LoginActivity;
+import com.hactiv8.e_commerceproject2.R;
+import com.hactiv8.e_commerceproject2.databinding.ActivityLoginAdminBinding;
 import com.hactiv8.e_commerceproject2.ui.user.DashboardUserActivity;
 import com.hactiv8.e_commerceproject2.ui.user.RegisterUserActivity;
 
-
-public class LoginActivity extends AppCompatActivity{
+public class LoginAdminActivity extends AppCompatActivity {
 
     //view binding
-    private ActivityLoginBinding binding;
+    private ActivityLoginAdminBinding binding;
 
     //firebase Auth
     private FirebaseAuth firebaseAuth;
@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        binding = ActivityLoginAdminBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //init firebase auth
@@ -52,13 +52,6 @@ public class LoginActivity extends AppCompatActivity{
         progressDialog.setTitle("Tunggu Sebentar...");
         progressDialog.setCanceledOnTouchOutside(false);
 
-        //handle klik register screen
-        binding.createAcount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, RegisterUserActivity.class));
-            }
-        });
 
         //handle klik button login
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +110,7 @@ public class LoginActivity extends AppCompatActivity{
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
-                        Toast.makeText(LoginActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginAdminActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }
@@ -138,19 +131,14 @@ public class LoginActivity extends AppCompatActivity{
                         //get user type
                         String userType = ""+snapshot.child("userType").getValue();
                         //chek user type
-                        if (userType.equals("user")){
-                            //this is simple user,open user dashboard
-                            startActivity(new Intent(LoginActivity.this, DashboardUserActivity.class));
-                            finish();
-                        }
-                        else if (userType.equals("admin")){
+                        if (userType.equals("admin")){
                             //this is simple admin,open admin dashboard
-                            startActivity(new Intent(LoginActivity.this, DashboardAdminActivity.class));
+                            startActivity(new Intent(LoginAdminActivity.this, DashboardAdminActivity.class));
                             finish();
                         }
                         else if (userType.equals("staff")){
                             //this is simple staff,open staff dashboard
-                            startActivity(new Intent(LoginActivity.this, DashboardUserActivity.class));
+                            startActivity(new Intent(LoginAdminActivity.this, DashboardUserActivity.class));
                             finish();
                         }
                     }
