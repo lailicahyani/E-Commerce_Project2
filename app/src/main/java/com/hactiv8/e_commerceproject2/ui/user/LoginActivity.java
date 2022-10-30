@@ -1,4 +1,4 @@
-package com.hactiv8.e_commerceproject2;
+package com.hactiv8.e_commerceproject2.ui.user;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,10 +20,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.hactiv8.e_commerceproject2.PilihanActivity;
 import com.hactiv8.e_commerceproject2.databinding.ActivityLoginBinding;
 import com.hactiv8.e_commerceproject2.ui.admin.DashboardAdminActivity;
-import com.hactiv8.e_commerceproject2.ui.user.DashboardUserActivity;
-import com.hactiv8.e_commerceproject2.ui.user.RegisterUserActivity;
 
 
 public class LoginActivity extends AppCompatActivity{
@@ -87,7 +86,7 @@ public class LoginActivity extends AppCompatActivity{
         //validate data
         if (TextUtils.isEmpty(email)){
 
-            Toast.makeText(this, "Username Salah!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Email Salah!", Toast.LENGTH_LONG).show();
         }
         else if (TextUtils.isEmpty(password)){
 
@@ -143,15 +142,15 @@ public class LoginActivity extends AppCompatActivity{
                             startActivity(new Intent(LoginActivity.this, DashboardUserActivity.class));
                             finish();
                         }
-                        else if (userType.equals("admin")){
-                            //this is simple admin,open admin dashboard
-                            startActivity(new Intent(LoginActivity.this, DashboardAdminActivity.class));
+                        else {
+                            startActivity(new Intent(LoginActivity.this, PilihanActivity.class));
+                            Toast.makeText(LoginActivity.this, "Login hanya untuk Customer..", Toast.LENGTH_LONG).show();
                             finish();
-                        }
-                        else if (userType.equals("staff")){
-                            //this is simple staff,open staff dashboard
-                            startActivity(new Intent(LoginActivity.this, DashboardUserActivity.class));
-                            finish();
+//                        }
+//                        else if (userType.equals("staff")){
+//                            //this is simple staff,open staff dashboard
+//                            startActivity(new Intent(LoginActivity.this, DashboardUserActivity.class));
+//                            finish();
                         }
                     }
 

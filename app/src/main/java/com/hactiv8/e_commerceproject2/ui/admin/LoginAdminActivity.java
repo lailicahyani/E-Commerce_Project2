@@ -20,11 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.hactiv8.e_commerceproject2.LoginActivity;
-import com.hactiv8.e_commerceproject2.R;
 import com.hactiv8.e_commerceproject2.databinding.ActivityLoginAdminBinding;
 import com.hactiv8.e_commerceproject2.ui.user.DashboardUserActivity;
-import com.hactiv8.e_commerceproject2.ui.user.RegisterUserActivity;
 
 public class LoginAdminActivity extends AppCompatActivity {
 
@@ -80,7 +77,7 @@ public class LoginAdminActivity extends AppCompatActivity {
         //validate data
         if (TextUtils.isEmpty(email)){
 
-            Toast.makeText(this, "Username Salah!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Email Salah!", Toast.LENGTH_LONG).show();
         }
         else if (TextUtils.isEmpty(password)){
 

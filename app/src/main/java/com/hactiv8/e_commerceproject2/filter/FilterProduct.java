@@ -1,4 +1,4 @@
-package com.hactiv8.e_commerceproject2;
+package com.hactiv8.e_commerceproject2.filter;
 
 import android.widget.Filter;
 
@@ -6,7 +6,6 @@ import com.hactiv8.e_commerceproject2.adapter.AdapterProduct;
 import com.hactiv8.e_commerceproject2.model.ModelProduct;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class FilterProduct extends Filter {
 

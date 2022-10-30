@@ -21,6 +21,7 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_add_product.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_dashboard_admin.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_dashboard_user.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_edit_product.xml" value="0.203125" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_login_admin.xml" value="0.203125" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_main.xml" value="0.19" />
@@ -29,7 +30,9 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_register.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_register_user.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_splash.xml" value="0.33" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/details_product.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/row_product.xml" value="0.33" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/row_product_user.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/splash_main.xml" value="0.33" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>

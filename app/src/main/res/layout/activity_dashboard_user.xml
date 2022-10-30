@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="wrap_content"
         android:background="@drawable/shape_toolbar">
 
         <TextView
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
-            android:text="Dasboard User"
+            android:text="Dasboard"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -36,13 +36,100 @@
 
         <ImageButton
             android:id="@+id/logout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_power_settings_new_24" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/subTitle"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/shape_rect2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tabProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_rect"
+                android:gravity="center"
+                android:text="Products"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tabOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Orders"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/productRl"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_rect5"
+            android:drawableStart="@drawable/ic_baseline_search_gray"
+            android:layout_toStartOf="@id/filterBtn"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:hint="Search"/>
+
+        <ImageButton
+            android:id="@+id/filterBtn"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_baseline_dashboard_24"/>
+
+        <TextView
+            android:id="@+id/filteredProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_baseline_power_settings_new_24"
-            android:background="@android:color/transparent"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"/>
+            android:layout_below="@id/search"
+            android:textColor="@color/black"
+            android:text="All"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/productsRc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/filteredProduct"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/row_product_user" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/orderRl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
     </RelativeLayout>
 
 </RelativeLayout>
