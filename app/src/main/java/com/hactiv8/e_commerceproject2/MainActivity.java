@@ -29,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //handle about klik
-//        binding.aboutBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this, AboutActivity.class));
-//            }
-//        });
+        binding.aboutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+            }
+        });
 
     }
 }

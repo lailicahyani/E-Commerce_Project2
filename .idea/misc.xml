@@ -15,9 +15,11 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/drawable/shape_rect3.xml" value="0.1875" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/drawable/shape_rect4.xml" value="0.1925" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/drawable/shape_rect5.xml" value="0.1925" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/drawable/shape_rect6.xml" value="0.1845" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/drawable/shape_toolbar.xml" value="0.144" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/font/poppins.xml" value="0.234375" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_about.xml" value="0.203125" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_about2.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_add_product.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_dashboard_admin.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_dashboard_user.xml" value="0.20416666666666666" />
@@ -29,6 +31,7 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_pilihan_login.xml" value="0.203125" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_register.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_register_user.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_registrasi_staff.xml" value="0.203125" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/activity_splash.xml" value="0.33" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/details_product.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/ECommerceProject2/app/src/main/res/layout/row_product.xml" value="0.33" />

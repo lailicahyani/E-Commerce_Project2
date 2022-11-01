@@ -123,7 +123,7 @@ public class DashboardAdminActivity extends AppCompatActivity {
         binding.addStaff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DashboardAdminActivity.this, AddProductActivity.class));
+                startActivity(new Intent(DashboardAdminActivity.this, RegistrasiStaffActivity.class));
             }
         });
 
