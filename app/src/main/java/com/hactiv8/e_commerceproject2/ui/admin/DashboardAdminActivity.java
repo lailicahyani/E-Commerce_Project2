@@ -168,9 +168,8 @@ public class DashboardAdminActivity extends AppCompatActivity {
 
     private void loadFilteredProducts(String selected) {
         productList = new ArrayList<>();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-        reference.child(firebaseAuth.getUid()).child("Product")
-                .addValueEventListener(new ValueEventListener() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
+        reference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         productList.clear();
@@ -196,9 +195,8 @@ public class DashboardAdminActivity extends AppCompatActivity {
 
     private void loadAllProducts() {
         productList = new ArrayList<>();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-        reference.child(firebaseAuth.getUid()).child("Product")
-                .addValueEventListener(new ValueEventListener() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
+        reference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         productList.clear();

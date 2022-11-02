@@ -1,4 +1,4 @@
-package com.hactiv8.e_commerceproject2.ui.admin;
+package com.hactiv8.e_commerceproject2.ui.staff;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,13 +22,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hactiv8.e_commerceproject2.PilihanActivity;
 import com.hactiv8.e_commerceproject2.databinding.ActivityLoginAdminBinding;
+import com.hactiv8.e_commerceproject2.databinding.ActivityLoginStaffBinding;
 import com.hactiv8.e_commerceproject2.ui.user.DashboardUserActivity;
 import com.hactiv8.e_commerceproject2.ui.user.LoginActivity;
 
-public class LoginAdminActivity extends AppCompatActivity {
+public class LoginStaffActivity extends AppCompatActivity {
 
     //view binding
-    private ActivityLoginAdminBinding binding;
+    private ActivityLoginStaffBinding binding;
 
     //firebase Auth
     private FirebaseAuth firebaseAuth;
@@ -40,7 +41,7 @@ public class LoginAdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLoginAdminBinding.inflate(getLayoutInflater());
+        binding = ActivityLoginStaffBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //init firebase auth
@@ -109,7 +110,7 @@ public class LoginAdminActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
-                        Toast.makeText(LoginAdminActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginStaffActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }
@@ -130,15 +131,15 @@ public class LoginAdminActivity extends AppCompatActivity {
                         //get user type
                         String userType = ""+snapshot.child("userType").getValue();
                         //chek user type
-                        if (userType.equals("admin")){
+                        if (userType.equals("staff")){
                             //this is simple admin,open admin dashboard
-                            startActivity(new Intent(LoginAdminActivity.this, DashboardAdminActivity.class));
+                            startActivity(new Intent(LoginStaffActivity.this, DashboardUserActivity.class));
                             finish();
                         }
                         else {
                             //this is simple staff,open staff dashboard
-                            startActivity(new Intent(LoginAdminActivity.this, PilihanActivity.class));
-                            Toast.makeText(LoginAdminActivity.this, "Login hanya untuk Admin..", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(LoginStaffActivity.this, PilihanActivity.class));
+                            Toast.makeText(LoginStaffActivity.this, "Login hanya untuk Staff..", Toast.LENGTH_LONG).show();
                             finish();
                         }
                     }

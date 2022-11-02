@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.hactiv8.e_commerceproject2.databinding.ActivityPilihanBinding;
 import com.hactiv8.e_commerceproject2.ui.admin.LoginAdminActivity;
+import com.hactiv8.e_commerceproject2.ui.staff.LoginStaffActivity;
 import com.hactiv8.e_commerceproject2.ui.user.LoginActivity;
 
 public class PilihanActivity extends AppCompatActivity {
@@ -33,7 +34,7 @@ public class PilihanActivity extends AppCompatActivity {
         binding.staffBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PilihanActivity.this, LoginAdminActivity.class));
+                startActivity(new Intent(PilihanActivity.this, LoginStaffActivity.class));
             }
         });
 

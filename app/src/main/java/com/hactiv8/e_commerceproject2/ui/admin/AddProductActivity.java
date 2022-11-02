@@ -208,11 +208,11 @@ public class AddProductActivity extends AppCompatActivity {
             hashMap.put("discountPrice", ""+discountPrice);
             hashMap.put("discountNote", ""+discountNote);
             hashMap.put("discountAvailable", ""+discountAvailable);
-            hashMap.put("timestamp", ""+timestamp);
+            hashMap.put("timestamp", timestamp);
             hashMap.put("uid", ""+firebaseAuth.getUid());
 
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-            reference.child(firebaseAuth.getUid()).child("Product").child(timestamp).setValue(hashMap)
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
+            reference.child(""+timestamp).setValue(hashMap)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -253,11 +253,11 @@ public class AddProductActivity extends AppCompatActivity {
                                 hashMap.put("discountPrice", ""+discountPrice);
                                 hashMap.put("discountNote", ""+discountNote);
                                 hashMap.put("discountAvailable", ""+discountAvailable);
-                                hashMap.put("timestamp", ""+timestamp);
+                                hashMap.put("timestamp", timestamp);
                                 hashMap.put("uid", ""+firebaseAuth.getUid());
 
-                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-                                reference.child(firebaseAuth.getUid()).child("Product").child(timestamp).setValue(hashMap)
+                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
+                                reference.child(""+timestamp).setValue(hashMap)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {

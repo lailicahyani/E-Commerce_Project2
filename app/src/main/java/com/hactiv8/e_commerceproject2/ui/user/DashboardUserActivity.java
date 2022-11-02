@@ -1,4 +1,4 @@
-package com.hactiv8.e_commerceproject2.ui.user;
+ package com.hactiv8.e_commerceproject2.ui.user;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -31,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.hactiv8.e_commerceproject2.Constants;
 import com.hactiv8.e_commerceproject2.MainActivity;
 import com.hactiv8.e_commerceproject2.R;
+import com.hactiv8.e_commerceproject2.adapter.AdapterProduct;
 import com.hactiv8.e_commerceproject2.adapter.AdapterProductUser;
 import com.hactiv8.e_commerceproject2.databinding.ActivityDashboardUserBinding;
 import com.hactiv8.e_commerceproject2.model.ModelProduct;
@@ -150,7 +151,7 @@ public class DashboardUserActivity extends AppCompatActivity {
                                     loadAllProducts();
                                 }
                                 else{
-                                    adapterProductUser.getFilter().filter(selected);
+                                    loadFilteredProducts(selected);
                                 }
                             }
                         })
@@ -160,33 +161,89 @@ public class DashboardUserActivity extends AppCompatActivity {
 
     }
 
-//    private void setupViewPagerAdapter(ViewPager viewPager){
-//
-//    }
-//
-//    public class ViewPageAdapter extends FragmentPagerAdapter{
-//
-//        private ArrayList<ProductUserFragment>
-//
-//        public ViewPageAdapter(@NonNull FragmentManager fm, int behavior) {
-//            super(fm, behavior);
-//        }
-//
-//        @NonNull
-//        @Override
-//        public Fragment getItem(int position) {
-//            return null;
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            return 0;
-//        }
-//    }
+    private void loadFilteredProducts(String selected) {
+        productsList = new ArrayList<>();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
+        reference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        productsList.clear();
+                        for (DataSnapshot ds: snapshot.getChildren()){
+
+                            String productCategory = ""+ds.child("productCategory").getValue();
+                            if (selected.equals(productCategory)){
+                                ModelProduct modelProduct = ds.getValue(ModelProduct.class);
+                                productsList.add(modelProduct);
+                            }
+
+                        }
+                        adapterProductUser = new AdapterProductUser(DashboardUserActivity.this, productsList);
+                        productsRc.setAdapter(adapterProductUser);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+    private void loadAllProducts() {
+        productsList = new ArrayList<>();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
+        reference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        productsList.clear();
+                        for (DataSnapshot ds: dataSnapshot.getChildren()){
+                            ModelProduct modelProduct = ds.getValue(ModelProduct.class);
+                            productsList.add(modelProduct);
+                        }
+                        adapterProductUser = new AdapterProductUser(DashboardUserActivity.this, productsList);
+                        productsRc.setAdapter(adapterProductUser);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
 //    private void loadAllProducts() {
 //        productsList = new ArrayList<>();
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
+//        reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
+//                .addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    productsList.clear();
+//                    for (DataSnapshot ds: dataSnapshot.getChildren()){
+//                        String userType = ""+ds.child("userType").getValue();
+//                        String productId = ""+ds.child("productId").getValue();
+//
+////                        titleTv = ""+ds.child("titleTv").getValue();
+////                        productIcon = ""+ds.child("productIcon").getValue();
+////                        nextTv = ""+ds.child("nextTv").getValue();
+////                        discountNote = ""+ds.child("discountNote").getValue() ;
+////                        addToCartTv = ""+ds.child("addToCartTv").getValue();
+////                        discountPrice = ""+ds.child("discountPrice").getValue();
+////                        originalPrice = ""+ds.child("originalPrice").getValue();
+//
+//                        loadProduct(productId);
+//
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
+//    }
+//
+//    private void loadProduct(String productId) {
+//        productsList = new ArrayList<>();
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
 //        reference.orderByChild("userType").equalTo("admin")
 //                .addValueEventListener(new ValueEventListener() {
 //                    @Override
@@ -194,7 +251,12 @@ public class DashboardUserActivity extends AppCompatActivity {
 //                        productsList.clear();
 //                        for (DataSnapshot ds: dataSnapshot.getChildren()){
 //                            ModelProduct modelProduct = ds.getValue(ModelProduct.class);
-//                            productsList.add(modelProduct);
+//
+//                            String Product = ""+ds.child("productId").getValue();
+//
+//                            if (Product.equals(productId)){
+//                                productsList.add(modelProduct);
+//                            }
 //                        }
 //                        adapterProductUser = new AdapterProductUser(DashboardUserActivity.this, productsList);
 //                        productsRc.setAdapter(adapterProductUser);
@@ -205,27 +267,6 @@ public class DashboardUserActivity extends AppCompatActivity {
 //
 //                    }
 //                });
-    private void loadAllProducts() {
-        productsList = new ArrayList<>();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-        reference.orderByChild("user").equalTo("Product")
-                .addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    productsList.clear();
-                    for (DataSnapshot ds: dataSnapshot.getChildren()){
-                        ModelProduct modelProduct = ds.getValue(ModelProduct.class);
-                        productsList.add(modelProduct);
-                    }
-                    adapterProductUser = new AdapterProductUser(DashboardUserActivity.this, productsList);
-                    binding.productsRc.setAdapter(adapterProductUser);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
     }
 
     private void showProductsUI() {

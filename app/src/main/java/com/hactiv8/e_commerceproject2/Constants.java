@@ -5,15 +5,25 @@ public class Constants {
     //product category
     public static  final String[] productCategories = {
             "Fashion Wanita",
-            "Makanan",
             "Fashion Pria",
+            "Makanan & Minuman",
             "Elektronik",
             "Kecantikan",
             "Sekolah",
             "Olahraga",
             "Perawan Hewan",
             "Rumah Tangga",
-            "Dapur"
+            "Dapur",
+            "Buku",
+            "Fashion Anak & Bayi",
+            "Film & Musik",
+            "Gaming",
+            "Handphone & Tablet",
+            "Ibu & Bayi",
+            "Kamera",
+            "Komputer & Laptop",
+            "Pertukangan",
+            "Logam Mulia"
     };
 
     //product category
@@ -28,6 +38,16 @@ public class Constants {
             "Olahraga",
             "Perawan Hewan",
             "Rumah Tangga",
-            "Dapur"
+            "Dapur",
+            "Buku",
+            "Fashion Anak & Bayi",
+            "Film & Musik",
+            "Gaming",
+            "Handphone & Tablet",
+            "Ibu & Bayi",
+            "Kamera",
+            "Komputer & Laptop",
+            "Pertukangan",
+            "Logam Mulia"
     };
 }

@@ -1,5 +1,6 @@
 package com.hactiv8.e_commerceproject2.adapter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -38,10 +39,16 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.HolderPr
     public ArrayList<ModelProduct> productList, filterList;
     private FilterProduct filter;
 
+    private ProgressDialog progressDialog;
+
     public AdapterProduct(Context context, ArrayList<ModelProduct> productList) {
         this.context = context;
         this.productList = productList;
         this.filterList = productList;
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Tunggu Sebentar...");
+        progressDialog.setCanceledOnTouchOutside(false);
     }
 
     @NonNull
@@ -209,12 +216,13 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.HolderPr
 
     private void deleteProduct(String id) {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-        reference.child(firebaseAuth.getUid()).child("Product").child(id).removeValue()
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
+        reference.child(id).removeValue()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-
+                        progressDialog.dismiss();
+                        Toast.makeText(context, "Produk Berhasil di hapus", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

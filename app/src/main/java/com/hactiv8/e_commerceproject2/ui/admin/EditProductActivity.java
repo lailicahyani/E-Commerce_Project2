@@ -155,9 +155,65 @@ public class EditProductActivity extends AppCompatActivity {
         });
     }
 
+//    private void loadProductDetails() {
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
+//        reference.child(firebaseAuth.getUid()).child("Product").child(productId)
+//                .addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        String productId = ""+snapshot.child("productId").getValue();
+//                        String productTitle = ""+snapshot.child("productTitle").getValue();
+//                        String productDesc = ""+snapshot.child("productDesc").getValue();
+//                        String productCategory = ""+snapshot.child("productCategory").getValue();
+//                        String productQuantity = ""+snapshot.child("productQuantity").getValue();
+//                        String logoProduct = ""+snapshot.child("logoProduct").getValue();
+//                        String originalPrice = ""+snapshot.child("originalPrice").getValue();
+//                        String discountPrice = ""+snapshot.child("discountPrice").getValue();
+//                        String discountNote = ""+snapshot.child("discountNote").getValue();
+//                        String discountAvailable = ""+snapshot.child("discountAvailable").getValue();
+//                        String timestamp = ""+snapshot.child("timestamp").getValue();
+//                        String uid = ""+snapshot.child("uid").getValue();
+//
+//                        //set data to view
+//                        if (discountAvailable.equals("true")) {
+//                            diskon.setChecked(true);
+//
+//                            hargaDiskon.setVisibility(View.VISIBLE);
+//                            DiskonNote.setVisibility(View.VISIBLE);
+//                        }
+//                        else{
+//                            diskon.setChecked(false);
+//
+//                            hargaDiskon.setVisibility(View.GONE);
+//                            DiskonNote.setVisibility(View.GONE);
+//                        }
+//
+//                        title2.setText(productTitle);
+//                        desc.setText(productDesc);
+//                        category.setText(productCategory);
+//                        DiskonNote.setText(discountNote);
+//                        quantity.setText(productQuantity);
+//                        harga.setText(originalPrice);
+//                        hargaDiskon.setText(discountPrice);
+//
+//                        try{
+//                            Picasso.get().load(logoProduct).placeholder(R.drawable.addproduct).into(productIcon);
+//                        }
+//                        catch (Exception e){
+//                            productIcon.setImageResource(R.drawable.addproduct);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//    }
+
     private void loadProductDetails() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-        reference.child(firebaseAuth.getUid()).child("Product").child(productId)
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
+        reference.child(productId)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -270,8 +326,8 @@ public class EditProductActivity extends AppCompatActivity {
             hashMap.put("discountNote", ""+discountNote);
             hashMap.put("discountAvailable", "" + discountAvailable);
 
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-            reference.child(firebaseAuth.getUid()).child("Product").child(productId).updateChildren(hashMap)
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
+            reference.child(productId).updateChildren(hashMap)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -312,8 +368,8 @@ public class EditProductActivity extends AppCompatActivity {
                                 hashMap.put("discountNote", ""+discountNote);
                                 hashMap.put("discountAvailable", ""+discountAvailable);
 
-                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-                                reference.child(firebaseAuth.getUid()).child("Product").child(productId).updateChildren(hashMap)
+                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
+                                reference.child(productId).updateChildren(hashMap)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
