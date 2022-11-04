@@ -1,20 +1,18 @@
- package com.hactiv8.e_commerceproject2.ui.user;
+package com.hactiv8.e_commerceproject2.ui.user;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -31,15 +29,18 @@ import com.google.firebase.database.ValueEventListener;
 import com.hactiv8.e_commerceproject2.Constants;
 import com.hactiv8.e_commerceproject2.MainActivity;
 import com.hactiv8.e_commerceproject2.R;
-import com.hactiv8.e_commerceproject2.adapter.AdapterProduct;
+//import com.hactiv8.e_commerceproject2.adapter.AdapterCartItem;
 import com.hactiv8.e_commerceproject2.adapter.AdapterProductUser;
 import com.hactiv8.e_commerceproject2.databinding.ActivityDashboardUserBinding;
+import com.hactiv8.e_commerceproject2.model.ModelCartItem;
 import com.hactiv8.e_commerceproject2.model.ModelProduct;
-import com.hactiv8.e_commerceproject2.ui.admin.DashboardAdminActivity;
 
 import java.util.ArrayList;
 
-public class DashboardUserActivity extends AppCompatActivity {
+import p32929.androideasysql_library.Column;
+import p32929.androideasysql_library.EasyDB;
+
+ public class DashboardUserActivity extends AppCompatActivity {
 
     private TextView tabProduct, tabOrder, filteredProduct;
     private EditText search;
@@ -59,6 +60,9 @@ public class DashboardUserActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private ArrayList<ModelProduct> productsList;
     private AdapterProductUser adapterProductUser;
+
+//    private ArrayList<ModelCartItem> cartItemList;
+//    private AdapterCartItem adapterCartItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +92,8 @@ public class DashboardUserActivity extends AppCompatActivity {
         loadAllProducts();
 
         showProductsUI();
+
+//        deleteCartData();
 
         search.addTextChangedListener(new TextWatcher() {
             @Override
@@ -121,6 +127,14 @@ public class DashboardUserActivity extends AppCompatActivity {
                 checkUser();
             }
         });
+
+//        binding.cart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//               showCartDialog();
+
+//            }
+//        });
 
         binding.tabProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +174,89 @@ public class DashboardUserActivity extends AppCompatActivity {
         });
 
     }
+
+
+//     private void deleteCartData() {
+//         EasyDB easyDB = EasyDB.init(this, "ITEMS_DB")
+//                 .setTableName("ITEMS TABLE")  // You can ignore this line if you want
+//                 .addColumn(new Column("item_Id", new String[]{"text", "unique"}))
+//                 .addColumn(new Column("item_PID", new String[]{"text", "not null"}))
+//                 .addColumn(new Column("item_Name", new String[]{"text", "not null"}))
+//                 .addColumn(new Column("item_Price_Each", new String[]{"text", "not null"}))
+//                 .addColumn(new Column("item_Price", new String[]{"text", "not null"}))
+//                 .addColumn(new Column("item_Quantity", new String[]{"text", "not null"}))
+//                 .doneTableColumn();
+//         easyDB.deleteAllDataFromTable();
+//     }
+//
+//     public double allTotalPrice = 0.000;
+//    public TextView allTotalPriceTv, checkoutBtn;
+//    private void showCartDialog() {
+//        cartItemList = new ArrayList<>();
+//        View view = LayoutInflater.from(this).inflate(R.layout.dialog_cart, null);
+//        TextView titleTv = view.findViewById(R.id.titleTv);
+//        RecyclerView cartItemRc = view.findViewById(R.id.cartItemRc);
+////        sTotalTv = view.findViewById(R.id.sTotalTv);
+////        dFeeTv = view.findViewById(R.id.dFeeTv);
+//        allTotalPriceTv = view.findViewById(R.id.sTotalTv);
+//        checkoutBtn = view.findViewById(R.id.checkoutBtn);
+//
+//        AlertDialog.Builder builder =  new AlertDialog.Builder(this);
+//        builder.setView(view);
+//
+//
+////        titleTv.setText(titleTv);
+//        EasyDB easyDB = EasyDB.init(this, "ITEMS_DB")
+//                .setTableName("ITEMS TABLE")  // You can ignore this line if you want
+//                .addColumn(new Column("item_Id", new String[]{"text", "unique"}))
+//                .addColumn(new Column("item_PID", new String[]{"text", "not null"}))
+//                .addColumn(new Column("item_Name", new String[]{"text", "not null"}))
+//                .addColumn(new Column("item_Price_Each", new String[]{"text", "not null"}))
+//                .addColumn(new Column("item_Price", new String[]{"text", "not null"}))
+//                .addColumn(new Column("item_Quantity", new String[]{"text", "not null"}))
+//                .doneTableColumn();
+//
+//        Cursor res = easyDB.getAllData();
+//        while (res.moveToNext()){
+//            String id = res.getString(1);
+//            String Pid = res.getString(2);
+//            String name = res.getString(3);
+//            String cost = res.getString(4);
+//            String price = res.getString(5);
+//            String quantity = res.getString(6);
+//
+//            allTotalPrice = allTotalPrice + Double.parseDouble(cost);
+//            ModelCartItem modelCartItem = new ModelCartItem(
+//                    ""+id,
+//                    ""+Pid,
+//                    ""+name,
+//                    ""+cost,
+//                    ""+price,
+//                    ""+quantity
+//            );
+//
+//            cartItemList.add(modelCartItem);
+//        }
+//        adapterCartItem = new AdapterCartItem(this, cartItemList);
+//        cartItemRc.setAdapter(adapterCartItem);
+//
+//
+////        dFeeTv.setText("Rp " +deliveryFee);
+////        StotalTv.setText("Rp "+String.format("%.2f", allTotalPrice));
+////        allTotalPriceTv =  Double.parseDouble(allTotalPrice.re("Rp",""));
+//        allTotalPriceTv.setText("Rp "+String.format ("%.3f",  allTotalPrice));
+//
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
+//
+//        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//                allTotalPrice = 0.000;
+//
+//            }
+//        });
+//    }
 
     private void loadFilteredProducts(String selected) {
         productsList = new ArrayList<>();
@@ -209,64 +306,6 @@ public class DashboardUserActivity extends AppCompatActivity {
                     }
                 });
 
-//    private void loadAllProducts() {
-//        productsList = new ArrayList<>();
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-//        reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
-//                .addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    productsList.clear();
-//                    for (DataSnapshot ds: dataSnapshot.getChildren()){
-//                        String userType = ""+ds.child("userType").getValue();
-//                        String productId = ""+ds.child("productId").getValue();
-//
-////                        titleTv = ""+ds.child("titleTv").getValue();
-////                        productIcon = ""+ds.child("productIcon").getValue();
-////                        nextTv = ""+ds.child("nextTv").getValue();
-////                        discountNote = ""+ds.child("discountNote").getValue() ;
-////                        addToCartTv = ""+ds.child("addToCartTv").getValue();
-////                        discountPrice = ""+ds.child("discountPrice").getValue();
-////                        originalPrice = ""+ds.child("originalPrice").getValue();
-//
-//                        loadProduct(productId);
-//
-//                    }
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                }
-//            });
-//    }
-//
-//    private void loadProduct(String productId) {
-//        productsList = new ArrayList<>();
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("user");
-//        reference.orderByChild("userType").equalTo("admin")
-//                .addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        productsList.clear();
-//                        for (DataSnapshot ds: dataSnapshot.getChildren()){
-//                            ModelProduct modelProduct = ds.getValue(ModelProduct.class);
-//
-//                            String Product = ""+ds.child("productId").getValue();
-//
-//                            if (Product.equals(productId)){
-//                                productsList.add(modelProduct);
-//                            }
-//                        }
-//                        adapterProductUser = new AdapterProductUser(DashboardUserActivity.this, productsList);
-//                        productsRc.setAdapter(adapterProductUser);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
     }
 
     private void showProductsUI() {

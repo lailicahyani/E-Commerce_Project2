@@ -97,7 +97,7 @@
                 android:background="@drawable/shape_edittext2"
                 android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                 android:drawablePadding="10dp"
-                android:inputType="textPersonName|textMultiLine"
+                android:inputType="textAutoComplete"
                 android:padding="10dp"
                 android:textSize="15dp"
                 android:text="Kategori" />
@@ -127,7 +127,7 @@
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/shape_edittext2"
                 android:hint="Harga"
-                android:inputType="numberDecimal"
+                android:inputType="numberDecimal|textPassword"
                 android:padding="10dp" />
 
             <androidx.appcompat.widget.SwitchCompat
@@ -153,7 +153,7 @@
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/shape_edittext2"
                 android:hint="Harga Diskon"
-                android:inputType="numberDecimal"
+                android:inputType="numberDecimal|textPassword"
                 android:padding="10dp" />
 
             <EditText
