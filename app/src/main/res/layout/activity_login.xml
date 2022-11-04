@@ -94,26 +94,26 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--Forgot Pass-->
-            <TextView
-                android:id="@+id/forgotPass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/passLayout"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="5dp"
-                android:padding="10dp"
-                android:textSize="17dp"
-                android:text="Lupa Password?"
-                android:textColor="@color/colorPrimaryDark" />
+<!--            <TextView-->
+<!--                android:id="@+id/forgotPass"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/passLayout"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:padding="10dp"-->
+<!--                android:text="Lupa Password?"-->
+<!--                android:textColor="@color/colorPrimaryDark"-->
+<!--                android:textSize="17dp" />-->
 
             <!--button-->
             <Button
                 android:id="@+id/loginBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/forgotPass"
+                android:layout_below="@id/passLayout"
                 android:background="@drawable/shape_button"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:text="@string/login"/>
 
             <!--create acount-->
