@@ -127,7 +127,7 @@
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/shape_edittext2"
                 android:hint="Harga"
-                android:inputType="numberDecimal"
+                android:inputType="numberDecimal|textPassword"
                 android:padding="10dp" />
 
             <androidx.appcompat.widget.SwitchCompat
@@ -153,7 +153,7 @@
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/shape_edittext2"
                 android:hint="Harga Diskon"
-                android:inputType="numberDecimal"
+                android:inputType="numberDecimal|textPassword"
                 android:padding="10dp" />
 
             <EditText
