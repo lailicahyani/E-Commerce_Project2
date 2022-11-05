@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
@@ -68,14 +69,6 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
-        //handle klik lupa password screen
-//        binding.createAcount.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
-
     }
     private String email = "", password = "";
     private void validateData() {
@@ -85,7 +78,7 @@ public class LoginActivity extends AppCompatActivity{
         password = binding.inputPassword.getText().toString().trim();
 
         //validate data
-        if (TextUtils.isEmpty(email)){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
 
             Toast.makeText(this, "Email Salah!", Toast.LENGTH_LONG).show();
         }
@@ -147,11 +140,6 @@ public class LoginActivity extends AppCompatActivity{
                             startActivity(new Intent(LoginActivity.this, PilihanActivity.class));
                             Toast.makeText(LoginActivity.this, "Login hanya untuk Customer..", Toast.LENGTH_LONG).show();
                             finish();
-//                        }
-//                        else if (userType.equals("staff")){
-//                            //this is simple staff,open staff dashboard
-//                            startActivity(new Intent(LoginActivity.this, DashboardUserActivity.class));
-//                            finish();
                         }
                     }
 

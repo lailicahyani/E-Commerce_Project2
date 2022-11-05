@@ -30,6 +30,7 @@ import com.hactiv8.e_commerceproject2.Constants;
 import com.hactiv8.e_commerceproject2.MainActivity;
 import com.hactiv8.e_commerceproject2.R;
 //import com.hactiv8.e_commerceproject2.adapter.AdapterCartItem;
+import com.hactiv8.e_commerceproject2.adapter.AdapterCartItem;
 import com.hactiv8.e_commerceproject2.adapter.AdapterProductUser;
 import com.hactiv8.e_commerceproject2.databinding.ActivityDashboardUserBinding;
 import com.hactiv8.e_commerceproject2.model.ModelCartItem;
@@ -61,8 +62,8 @@ import p32929.androideasysql_library.EasyDB;
     private ArrayList<ModelProduct> productsList;
     private AdapterProductUser adapterProductUser;
 
-//    private ArrayList<ModelCartItem> cartItemList;
-//    private AdapterCartItem adapterCartItem;
+    private ArrayList<ModelCartItem> cartItemList;
+    private AdapterCartItem adapterCartItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +94,7 @@ import p32929.androideasysql_library.EasyDB;
 
         showProductsUI();
 
-//        deleteCartData();
+        deleteCartData();
 
         search.addTextChangedListener(new TextWatcher() {
             @Override
@@ -132,7 +133,6 @@ import p32929.androideasysql_library.EasyDB;
 //            @Override
 //            public void onClick(View view) {
 //               showCartDialog();
-
 //            }
 //        });
 
@@ -176,87 +176,78 @@ import p32929.androideasysql_library.EasyDB;
     }
 
 
-//     private void deleteCartData() {
-//         EasyDB easyDB = EasyDB.init(this, "ITEMS_DB")
-//                 .setTableName("ITEMS TABLE")  // You can ignore this line if you want
-//                 .addColumn(new Column("item_Id", new String[]{"text", "unique"}))
-//                 .addColumn(new Column("item_PID", new String[]{"text", "not null"}))
-//                 .addColumn(new Column("item_Name", new String[]{"text", "not null"}))
-//                 .addColumn(new Column("item_Price_Each", new String[]{"text", "not null"}))
-//                 .addColumn(new Column("item_Price", new String[]{"text", "not null"}))
-//                 .addColumn(new Column("item_Quantity", new String[]{"text", "not null"}))
-//                 .doneTableColumn();
-//         easyDB.deleteAllDataFromTable();
-//     }
-//
-//     public double allTotalPrice = 0.000;
-//    public TextView allTotalPriceTv, checkoutBtn;
-//    private void showCartDialog() {
-//        cartItemList = new ArrayList<>();
-//        View view = LayoutInflater.from(this).inflate(R.layout.dialog_cart, null);
-//        TextView titleTv = view.findViewById(R.id.titleTv);
-//        RecyclerView cartItemRc = view.findViewById(R.id.cartItemRc);
-////        sTotalTv = view.findViewById(R.id.sTotalTv);
-////        dFeeTv = view.findViewById(R.id.dFeeTv);
-//        allTotalPriceTv = view.findViewById(R.id.sTotalTv);
-//        checkoutBtn = view.findViewById(R.id.checkoutBtn);
-//
-//        AlertDialog.Builder builder =  new AlertDialog.Builder(this);
-//        builder.setView(view);
-//
-//
-////        titleTv.setText(titleTv);
-//        EasyDB easyDB = EasyDB.init(this, "ITEMS_DB")
-//                .setTableName("ITEMS TABLE")  // You can ignore this line if you want
-//                .addColumn(new Column("item_Id", new String[]{"text", "unique"}))
-//                .addColumn(new Column("item_PID", new String[]{"text", "not null"}))
-//                .addColumn(new Column("item_Name", new String[]{"text", "not null"}))
-//                .addColumn(new Column("item_Price_Each", new String[]{"text", "not null"}))
-//                .addColumn(new Column("item_Price", new String[]{"text", "not null"}))
-//                .addColumn(new Column("item_Quantity", new String[]{"text", "not null"}))
-//                .doneTableColumn();
-//
-//        Cursor res = easyDB.getAllData();
-//        while (res.moveToNext()){
-//            String id = res.getString(1);
-//            String Pid = res.getString(2);
-//            String name = res.getString(3);
-//            String cost = res.getString(4);
-//            String price = res.getString(5);
-//            String quantity = res.getString(6);
-//
-//            allTotalPrice = allTotalPrice + Double.parseDouble(cost);
-//            ModelCartItem modelCartItem = new ModelCartItem(
-//                    ""+id,
-//                    ""+Pid,
-//                    ""+name,
-//                    ""+cost,
-//                    ""+price,
-//                    ""+quantity
-//            );
-//
-//            cartItemList.add(modelCartItem);
-//        }
-//        adapterCartItem = new AdapterCartItem(this, cartItemList);
-//        cartItemRc.setAdapter(adapterCartItem);
-//
-//
-////        dFeeTv.setText("Rp " +deliveryFee);
-////        StotalTv.setText("Rp "+String.format("%.2f", allTotalPrice));
-////        allTotalPriceTv =  Double.parseDouble(allTotalPrice.re("Rp",""));
-//        allTotalPriceTv.setText("Rp "+String.format ("%.3f",  allTotalPrice));
-//
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
-//
-//        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                allTotalPrice = 0.000;
-//
-//            }
-//        });
-//    }
+     private void deleteCartData() {
+         EasyDB easyDB = EasyDB.init(this, "ITEMS_DB")
+                 .setTableName("ITEMS TABLE")  // You can ignore this line if you want
+                 .addColumn(new Column("item_Id", new String[]{"text", "unique"}))
+                 .addColumn(new Column("item_PID", new String[]{"text", "not null"}))
+                 .addColumn(new Column("item_Name", new String[]{"text", "not null"}))
+                 .addColumn(new Column("item_Price_Each", new String[]{"text", "not null"}))
+                 .addColumn(new Column("item_Price", new String[]{"text", "not null"}))
+                 .addColumn(new Column("item_Quantity", new String[]{"text", "not null"}))
+                 .doneTableColumn();
+         easyDB.deleteAllDataFromTable();
+     }
+
+     public double allTotalPrice = 0.000;
+    public TextView sTotalTv, checkoutBtn;
+    private void showCartDialog() {
+        cartItemList = new ArrayList<>();
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_cart, null);
+        RecyclerView cartItemRc = view.findViewById(R.id.cartItemRc);
+        sTotalTv = view.findViewById(R.id.sTotalTv);
+        checkoutBtn = view.findViewById(R.id.checkoutBtn);
+
+        AlertDialog.Builder builder =  new AlertDialog.Builder(this);
+        builder.setView(view);
+
+        EasyDB easyDB = EasyDB.init(this, "ITEMS_DB")
+                .setTableName("ITEMS_TABLE")  // You can ignore this line if you want
+                .addColumn(new Column("item_Id", new String[]{"text", "unique"}))
+                .addColumn(new Column("item_PID", new String[]{"text", "not null"}))
+                .addColumn(new Column("item_Name", new String[]{"text", "not null"}))
+                .addColumn(new Column("item_Price_Each", new String[]{"text", "not null"}))
+                .addColumn(new Column("item_Price", new String[]{"text", "not null"}))
+                .addColumn(new Column("item_Quantity", new String[]{"text", "not null"}))
+                .doneTableColumn();
+
+        Cursor res = easyDB.getAllData();
+        while (res.moveToNext()){
+            String id = res.getString(1);
+            String pid = res.getString(2);
+            String name = res.getString(3);
+            String price = res.getString(4);
+            String cost = res.getString(5);
+            String quantity = res.getString(6);
+
+            allTotalPrice = allTotalPrice + Double.parseDouble(cost);
+            ModelCartItem modelCartItem = new ModelCartItem(
+                    ""+id,
+                    ""+pid,
+                    ""+name,
+                    ""+price,
+                    ""+cost,
+                    ""+quantity
+            );
+
+            cartItemList.add(modelCartItem);
+        }
+        adapterCartItem = new AdapterCartItem(this, cartItemList);
+        cartItemRc.setAdapter(adapterCartItem);
+
+        sTotalTv.setText("Rp "+String.format ("%.3f",  allTotalPrice));
+
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                allTotalPrice = 0.000;
+            }
+        });
+    }
 
     private void loadFilteredProducts(String selected) {
         productsList = new ArrayList<>();

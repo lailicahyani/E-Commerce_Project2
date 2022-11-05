@@ -30,8 +30,8 @@ public class Constants {
     public static  final String[] productCategories1 = {
             "All",
             "Fashion Wanita",
-            "Makanan & Minuman",
             "Fashion Pria",
+            "Makanan & Minuman",
             "Elektronik",
             "Kecantikan",
             "Sekolah",

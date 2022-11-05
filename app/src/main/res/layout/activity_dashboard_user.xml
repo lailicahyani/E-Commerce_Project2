@@ -71,7 +71,7 @@
                 android:background="@drawable/shape_rect"
                 android:gravity="center"
                 android:text="Products"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tabOrder"
@@ -80,7 +80,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Orders"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </RelativeLayout>
@@ -119,10 +119,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/search"
-            android:textColor="@color/black"
-            android:text="All"
             android:layout_marginStart="10dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp"
+            android:text="All"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productsRc"

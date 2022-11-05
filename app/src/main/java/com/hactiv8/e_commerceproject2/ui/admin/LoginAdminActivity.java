@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
@@ -77,7 +78,7 @@ public class LoginAdminActivity extends AppCompatActivity {
         password = binding.inputPassword.getText().toString().trim();
 
         //validate data
-        if (TextUtils.isEmpty(email)){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
 
             Toast.makeText(this, "Email Salah!", Toast.LENGTH_LONG).show();
         }

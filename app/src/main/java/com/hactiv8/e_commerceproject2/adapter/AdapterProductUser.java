@@ -198,7 +198,7 @@ public class AdapterProductUser extends RecyclerView.Adapter<AdapterProductUser.
         ImageButton incrementBtn = view.findViewById(R.id.incrementBtn);
         Button addCart = view.findViewById(R.id.addCart);
 
-        String productId = modelProduct.getProductId();
+        final String productId = modelProduct.getProductId();
         String title = modelProduct.getProductTitle();
         String discountNote = modelProduct.getDiscountNote();
         String image = modelProduct.getLogoProduct();
@@ -281,7 +281,7 @@ public class AdapterProductUser extends RecyclerView.Adapter<AdapterProductUser.
         itemId++;
 
         EasyDB easyDB = EasyDB.init(context, "ITEMS_DB")
-                .setTableName("ITEMS TABLE")  // You can ignore this line if you want
+                .setTableName("ITEMS_TABLE")
                 .addColumn(new Column("item_Id", new String[]{"text", "unique"}))
                 .addColumn(new Column("item_PID", new String[]{"text", "not null"}))
                 .addColumn(new Column("item_Name", new String[]{"text", "not null"}))
